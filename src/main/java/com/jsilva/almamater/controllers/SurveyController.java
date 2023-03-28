@@ -42,11 +42,11 @@ public class SurveyController {
             return ResponseEntity.status(HttpStatus.OK).body(recommend(survey));
         }
 
-        for (int carrerId : survey.getCareerId()) {
+        for (int careerId : survey.getCareerId()) {
             for (University university : universityList) {
                 List<Career> careerInUniversity = Lists.newArrayList(university.getCareers());
                 for (Career career : careerInUniversity) {
-                    if (career.getId() == carrerId) {
+                    if (career.getId() == careerId) {
                         return ResponseEntity.status(HttpStatus.OK).body(recommend(survey));
                     }
                 }

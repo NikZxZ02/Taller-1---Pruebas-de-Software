@@ -1,7 +1,6 @@
 package com.jsilva.almamater;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,7 +30,7 @@ public class AlmaMaterApplication {
     
     static void leerCSV() throws FileNotFoundException, IOException{
         Resource resource = new ClassPathResource("data_universidades.csv");
-	    InputStream universidadInput = resource.getInputStream();
+	    InputStream universityInput = resource.getInputStream();
 
         Resource resource2 = new ClassPathResource("data_carreras.csv");
 	    InputStream carreraInput = resource.getInputStream();
@@ -39,7 +38,7 @@ public class AlmaMaterApplication {
         universities = new ArrayList<>();
         carreras = new ArrayList<>();
 
-        BufferedReader brData = new BufferedReader(new InputStreamReader(universidadInput));
+        BufferedReader brData = new BufferedReader(new InputStreamReader(universityInput));
 
         String line;
 
