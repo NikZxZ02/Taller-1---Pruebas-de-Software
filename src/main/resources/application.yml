@@ -1,0 +1,5 @@
+app:
+  disable-default-exception-handling: true
+error:
+  whitelabel:
+    enabled: false
