@@ -5,16 +5,12 @@ import com.google.common.collect.Lists;
 import com.jsilva.almamater.models.Career;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import com.jsilva.almamater.models.Survey;
 import com.jsilva.almamater.models.University;
 import com.jsilva.almamater.models.Error;
 import java.util.Arrays;
 import java.util.Comparator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.jsilva.almamater.exceptions.NotFoundException;
 import com.jsilva.almamater.AlmaMaterApplication;
 
 /**

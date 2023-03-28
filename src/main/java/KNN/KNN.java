@@ -1,7 +1,5 @@
 package KNN;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import com.jsilva.almamater.models.Survey;
 import com.jsilva.almamater.models.University;
