@@ -34,7 +34,7 @@ public class AlmaMaterApplication {
 	    InputStream universidadInput = resource.getInputStream();
 
         Resource resource2 = new ClassPathResource("data_carreras.csv");
-	    InputStream carreraInput = resource.getInputStream();
+	    InputStream carreraInput = resource2.getInputStream();
 
         universities = new ArrayList<>();
         carreras = new ArrayList<>();
