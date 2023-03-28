@@ -14,6 +14,9 @@ import com.jsilva.almamater.models.University;
 import com.jsilva.almamater.models.Error;
 import java.util.Arrays;
 import java.util.Comparator;
+
+import com.jsilva.almamater.services.CareersService;
+import com.jsilva.almamater.services.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +39,8 @@ import com.jsilva.almamater.AlmaMaterApplication;
 @RequestMapping("/survey")
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST })
 public class SurveyController {
+    private final UniversityService universityService = new UniversityService();
+    private final CareersService careersService = new CareersService();
 
     Comparator<University> universityComparator = new Comparator<University>() {
         public int compare(University locale1, University locale2) {
@@ -45,7 +50,7 @@ public class SurveyController {
 
     @RequestMapping(value = "", method = POST)
     public ResponseEntity getRecommendOur(@RequestBody Survey survey) {
-        List<University> universityList = Lists.newArrayList(AlmaMaterApplication.universities);
+        List<University> universityList = Lists.newArrayList(this.universityService.getUniversities());
 
         if (survey.getCareerId().length == 0) {
             return ResponseEntity.status(HttpStatus.OK).body(recommend(survey));
@@ -80,12 +85,12 @@ public class SurveyController {
 
     private Object recommend(Survey survey) {
         List<University> recommendsUniversities = new ArrayList<>();
-        for (University university : AlmaMaterApplication.universities) {
+        for (University university : this.universityService.getUniversities()) {
             boolean skipUniversity = true;
             if (survey.getCareerId().length != 0) {
                 for (int idCareer : survey.getCareerId()) {
                     try {
-                        Career career = AlmaMaterApplication.carreras.stream()
+                        Career career = this.careersService.getCareers().stream()
                             .filter(carrera -> carrera.getId() == idCareer)
                             .findFirst()
                             .orElse(null);
