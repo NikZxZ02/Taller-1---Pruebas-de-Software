@@ -37,11 +37,7 @@ import com.jsilva.almamater.AlmaMaterApplication;
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST })
 public class SurveyController {
 
-    Comparator<University> universityComparator = new Comparator<University>() {
-        public int compare(University locale1, University locale2) {
-            return (int) (locale2.getPointsSum() - locale1.getPointsSum());
-        }
-    };
+    Comparator<University> universityComparator = (locale1, locale2) -> (int) (locale2.getPointsSum() - locale1.getPointsSum());
 
     @RequestMapping(value = "", method = POST)
     public ResponseEntity getRecommendOur(@RequestBody Survey survey) {
